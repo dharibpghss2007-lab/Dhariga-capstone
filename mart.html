@@ -1,0 +1,1612 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <title>Dhariga Mart | Smart Shopping</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+  <style>
+
+    :root{
+      --primary:#2563eb;
+      --primary-dark:#1d4ed8;
+      --secondary:#06b6d4;
+      --accent:#f59e0b;
+      --bg:#0f172a;
+      --card:#ffffff;
+      --text:#111827;
+      --muted:#64748b;
+      --success:#16a34a;
+      --error:#dc2626;
+      --border:#e5e7eb;
+      --shadow:0 20px 50px rgba(15,23,42,.25);
+      --radius:26px;
+    }
+
+    *{
+      margin:0;
+      padding:0;
+      box-sizing:border-box;
+    }
+
+    body{
+      font-family:"Poppins",sans-serif;
+      min-height:100vh;
+
+      display:flex;
+      align-items:center;
+      justify-content:center;
+
+      padding:24px;
+
+      background:
+        radial-gradient(
+          circle at top left,
+          rgba(37,99,235,.35),
+          transparent 35%
+        ),
+
+        radial-gradient(
+          circle at bottom right,
+          rgba(6,182,212,.30),
+          transparent 35%
+        ),
+
+        linear-gradient(
+          135deg,
+          #0f172a 0%,
+          #111827 40%,
+          #1e293b 100%
+        );
+
+      color:var(--text);
+
+      overflow:hidden;
+    }
+
+
+    body::before,
+    body::after{
+      content:"";
+
+      position:fixed;
+
+      width:320px;
+      height:320px;
+
+      border-radius:50%;
+
+      filter:blur(60px);
+
+      z-index:-1;
+    }
+
+
+    body::before{
+      top:-80px;
+      left:-80px;
+
+      background:rgba(37,99,235,.45);
+    }
+
+
+    body::after{
+      bottom:-100px;
+      right:-80px;
+
+      background:rgba(6,182,212,.35);
+    }
+
+
+    .container{
+      width:100%;
+
+      max-width:1120px;
+
+      min-height:680px;
+
+      background:rgba(255,255,255,.96);
+
+      border:1px solid rgba(255,255,255,.35);
+
+      backdrop-filter:blur(18px);
+
+      border-radius:var(--radius);
+
+      overflow:hidden;
+
+      box-shadow:var(--shadow);
+
+      display:flex;
+
+      position:relative;
+    }
+
+
+    /* LEFT SECTION */
+
+    .left{
+      flex:1;
+
+      padding:56px 48px;
+
+      color:#fff;
+
+      position:relative;
+
+      overflow:hidden;
+
+      background:
+        linear-gradient(
+          160deg,
+          rgba(37,99,235,.96),
+          rgba(6,182,212,.92)
+        ),
+
+        url(
+          "https://images.unsplash.com/photo-1441986300917-64674bd600d8?auto=format&fit=crop&w=1200&q=80"
+        )
+        center/cover;
+    }
+
+
+    .left::after{
+      content:"";
+
+      position:absolute;
+
+      inset:0;
+
+      background:
+        linear-gradient(
+          160deg,
+          rgba(15,23,42,.15),
+          rgba(15,23,42,.45)
+        );
+    }
+
+
+    .left-content{
+      position:relative;
+
+      z-index:1;
+
+      display:flex;
+
+      flex-direction:column;
+
+      height:100%;
+
+      justify-content:center;
+
+      gap:22px;
+    }
+
+
+    .brand{
+      display:flex;
+
+      align-items:center;
+
+      gap:14px;
+
+      margin-bottom:12px;
+    }
+
+
+    .brand-icon{
+      width:58px;
+      height:58px;
+
+      border-radius:18px;
+
+      display:grid;
+
+      place-items:center;
+
+      background:rgba(255,255,255,.18);
+
+      border:1px solid rgba(255,255,255,.25);
+
+      font-size:28px;
+
+      backdrop-filter:blur(10px);
+    }
+
+
+    .brand-name{
+      font-size:34px;
+
+      font-weight:700;
+
+      letter-spacing:.3px;
+    }
+
+
+    .left h1{
+      font-size:46px;
+
+      line-height:1.08;
+
+      font-weight:700;
+
+      max-width:440px;
+    }
+
+
+    .left p{
+      font-size:16px;
+
+      line-height:1.8;
+
+      max-width:470px;
+
+      color:rgba(255,255,255,.92);
+    }
+
+
+    .feature-list{
+      display:grid;
+
+      gap:14px;
+
+      margin-top:10px;
+
+      max-width:420px;
+    }
+
+
+    .feature{
+      display:flex;
+
+      align-items:center;
+
+      gap:12px;
+
+      padding:14px 16px;
+
+      border-radius:16px;
+
+      background:rgba(255,255,255,.12);
+
+      border:1px solid rgba(255,255,255,.18);
+
+      backdrop-filter:blur(8px);
+
+      font-weight:500;
+    }
+
+
+    .feature span{
+      width:34px;
+      height:34px;
+
+      border-radius:10px;
+
+      display:grid;
+
+      place-items:center;
+
+      background:rgba(255,255,255,.22);
+
+      font-size:16px;
+    }
+
+
+    /* RIGHT SECTION */
+
+    .right{
+      width:460px;
+
+      background:rgba(255,255,255,.92);
+
+      display:flex;
+
+      align-items:center;
+
+      justify-content:center;
+
+      padding:48px 40px;
+    }
+
+
+    .form-wrapper{
+      width:100%;
+
+      max-width:360px;
+    }
+
+
+    .tag{
+      display:inline-flex;
+
+      align-items:center;
+
+      gap:8px;
+
+      padding:8px 14px;
+
+      border-radius:999px;
+
+      background:#dbeafe;
+
+      color:var(--primary);
+
+      font-size:13px;
+
+      font-weight:600;
+
+      margin-bottom:18px;
+    }
+
+
+    .form-title{
+      font-size:32px;
+
+      font-weight:700;
+
+      margin-bottom:8px;
+
+      color:#0f172a;
+    }
+
+
+    .subtitle{
+      color:var(--muted);
+
+      margin-bottom:28px;
+
+      line-height:1.6;
+
+      font-size:14px;
+    }
+
+
+    .message{
+      display:none;
+
+      padding:14px 16px;
+
+      border-radius:14px;
+
+      margin-bottom:18px;
+
+      font-size:14px;
+
+      font-weight:500;
+    }
+
+
+    .message.success{
+      display:block;
+
+      background:#dcfce7;
+
+      color:#166534;
+
+      border:1px solid #bbf7d0;
+    }
+
+
+    .message.error{
+      display:block;
+
+      background:#fee2e2;
+
+      color:#991b1b;
+
+      border:1px solid #fecaca;
+    }
+
+
+    .input-group{
+      margin-bottom:18px;
+    }
+
+
+    .input-group label{
+      display:block;
+
+      margin-bottom:8px;
+
+      font-size:14px;
+
+      font-weight:600;
+
+      color:#334155;
+    }
+
+
+    .input-group input{
+      width:100%;
+
+      padding:15px 16px;
+
+      border:1px solid var(--border);
+
+      border-radius:16px;
+
+      font-size:15px;
+
+      outline:none;
+
+      transition:.25s ease;
+
+      background:#fff;
+    }
+
+
+    .input-group input:focus{
+      border-color:var(--primary);
+
+      box-shadow:
+        0 0 0 4px rgba(37,99,235,.12);
+
+      transform:translateY(-1px);
+    }
+
+
+    .btn{
+      width:100%;
+
+      border:none;
+
+      border-radius:16px;
+
+      padding:15px;
+
+      font-size:15px;
+
+      font-weight:600;
+
+      color:#fff;
+
+      cursor:pointer;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--primary),
+          var(--secondary)
+        );
+
+      box-shadow:
+        0 12px 24px rgba(37,99,235,.28);
+
+      transition:
+        transform .2s ease,
+        box-shadow .2s ease;
+    }
+
+
+    .btn:hover{
+      transform:translateY(-2px);
+
+      box-shadow:
+        0 16px 30px rgba(37,99,235,.34);
+    }
+
+
+    .switch-text{
+      text-align:center;
+
+      margin-top:22px;
+
+      color:var(--muted);
+
+      font-size:14px;
+    }
+
+
+    .switch-text a{
+      color:var(--primary);
+
+      font-weight:600;
+
+      cursor:pointer;
+
+      text-decoration:none;
+    }
+
+
+    .switch-text a:hover{
+      text-decoration:underline;
+    }
+
+
+    .demo{
+      margin-top:18px;
+
+      padding:14px;
+
+      border-radius:16px;
+
+      background:#eff6ff;
+
+      border:1px dashed #93c5fd;
+
+      font-size:13px;
+
+      color:#475569;
+
+      text-align:center;
+
+      line-height:1.6;
+    }
+
+
+    /* DASHBOARD */
+
+    .dashboard{
+      display:none;
+
+      width:100%;
+
+      background:#f8fafc;
+    }
+
+
+    .dashboard-header{
+      display:flex;
+
+      justify-content:space-between;
+
+      align-items:center;
+
+      padding:24px 30px;
+
+      background:
+        linear-gradient(
+          135deg,
+          var(--primary),
+          var(--secondary)
+        );
+
+      color:#fff;
+    }
+
+
+    .dashboard-header h2{
+      font-size:24px;
+
+      font-weight:700;
+    }
+
+
+    .logout-btn{
+      border:none;
+
+      border-radius:12px;
+
+      padding:10px 16px;
+
+      font-weight:600;
+
+      cursor:pointer;
+
+      color:#fff;
+
+      background:rgba(255,255,255,.18);
+
+      border:1px solid rgba(255,255,255,.25);
+
+      backdrop-filter:blur(10px);
+    }
+
+
+    .dashboard-content{
+      padding:32px;
+    }
+
+
+    .welcome{
+      background:
+        linear-gradient(
+          135deg,
+          #dbeafe,
+          #cffafe
+        );
+
+      border-radius:24px;
+
+      padding:32px;
+
+      margin-bottom:28px;
+
+      border:1px solid rgba(37,99,235,.10);
+    }
+
+
+    .welcome h3{
+      font-size:30px;
+
+      margin-bottom:10px;
+
+      color:#1e3a8a;
+    }
+
+
+    .welcome p{
+      color:#334155;
+
+      line-height:1.7;
+    }
+
+
+    .stats{
+      display:grid;
+
+      grid-template-columns:
+        repeat(3,1fr);
+
+      gap:20px;
+    }
+
+
+    .stat{
+      background:#fff;
+
+      border-radius:22px;
+
+      padding:24px;
+
+      border:1px solid #e5e7eb;
+
+      box-shadow:
+        0 10px 30px rgba(15,23,42,.05);
+    }
+
+
+    .stat-icon{
+      width:56px;
+      height:56px;
+
+      border-radius:18px;
+
+      display:grid;
+
+      place-items:center;
+
+      font-size:24px;
+
+      margin-bottom:16px;
+
+      background:
+        linear-gradient(
+          135deg,
+          rgba(37,99,235,.14),
+          rgba(6,182,212,.14)
+        );
+    }
+
+
+    .stat h4{
+      font-size:18px;
+
+      margin-bottom:8px;
+
+      color:#111827;
+    }
+
+
+    .stat p{
+      color:#64748b;
+
+      line-height:1.6;
+
+      font-size:14px;
+    }
+
+
+    /* RESPONSIVE */
+
+    @media (max-width:980px){
+
+      .container{
+        flex-direction:column;
+
+        min-height:auto;
+      }
+
+      .right{
+        width:100%;
+      }
+
+      .left{
+        min-height:360px;
+      }
+
+      .left h1{
+        font-size:36px;
+      }
+    }
+
+
+    @media (max-width:640px){
+
+      body{
+        padding:14px;
+      }
+
+      .left,
+      .right{
+        padding:28px 22px;
+      }
+
+      .brand-name{
+        font-size:28px;
+      }
+
+      .left h1{
+        font-size:30px;
+      }
+
+      .form-title{
+        font-size:28px;
+      }
+
+      .stats{
+        grid-template-columns:1fr;
+      }
+
+      .dashboard-content{
+        padding:20px;
+      }
+
+      .dashboard-header{
+        padding:18px 20px;
+      }
+    }
+
+  </style>
+</head>
+
+
+<body>
+
+
+  <div class="container">
+
+
+    <!-- AUTHENTICATION PAGE -->
+
+    <div id="authPage"
+         style="width:100%;display:flex;">
+
+
+      <!-- LEFT SIDE -->
+
+      <section class="left">
+
+        <div class="left-content">
+
+
+          <div class="brand">
+
+            <div class="brand-icon">
+              🛍️
+            </div>
+
+            <div class="brand-name">
+              Dhariga Mart
+            </div>
+
+          </div>
+
+
+          <h1>
+            Shop everything you love in one place.
+          </h1>
+
+
+          <p>
+            Discover trendy dresses, stylish shoes,
+            handbags, watches, accessories and
+            everyday shopping products at Dhariga Mart.
+          </p>
+
+
+          <div class="feature-list">
+
+
+            <div class="feature">
+              <span>👗</span>
+              Trendy dresses & fashion
+            </div>
+
+
+            <div class="feature">
+              <span>👟</span>
+              Stylish shoes & footwear
+            </div>
+
+
+            <div class="feature">
+              <span>👜</span>
+              Bags, watches & accessories
+            </div>
+
+
+            <div class="feature">
+              <span>🎁</span>
+              Great offers & easy shopping
+            </div>
+
+
+          </div>
+
+        </div>
+
+      </section>
+
+
+      <!-- RIGHT SIDE -->
+
+      <section class="right">
+
+        <div class="form-wrapper">
+
+
+          <!-- LOGIN -->
+
+          <div id="loginForm">
+
+
+            <div class="tag">
+              ✨ Welcome back
+            </div>
+
+
+            <h2 class="form-title">
+              Login
+            </h2>
+
+
+            <p class="subtitle">
+              Sign in to continue shopping
+              with your Dhariga Mart account.
+            </p>
+
+
+            <div id="loginMessage"
+                 class="message">
+            </div>
+
+
+            <div class="input-group">
+
+              <label for="loginUsername">
+                Username
+              </label>
+
+              <input
+                type="text"
+                id="loginUsername"
+                placeholder="Enter your username"
+              />
+
+            </div>
+
+
+            <div class="input-group">
+
+              <label for="loginPassword">
+                Password
+              </label>
+
+              <input
+                type="password"
+                id="loginPassword"
+                placeholder="Enter your password"
+              />
+
+            </div>
+
+
+            <button
+              class="btn"
+              onclick="loginUser()">
+
+              Login
+
+            </button>
+
+
+            <p class="switch-text">
+
+              Don't have an account?
+
+              <a onclick="showRegister()">
+                Create one
+              </a>
+
+            </p>
+
+
+            <div class="demo">
+
+              <strong>Demo account</strong>
+
+              <br>
+
+              Username:
+              <strong>admin</strong>
+
+              <br>
+
+              Password:
+              <strong>admin123</strong>
+
+            </div>
+
+
+          </div>
+
+
+          <!-- REGISTER -->
+
+          <div id="registerForm"
+               style="display:none;">
+
+
+            <div class="tag">
+              🛍️ Join Dhariga Mart
+            </div>
+
+
+            <h2 class="form-title">
+              Create Account
+            </h2>
+
+
+            <p class="subtitle">
+              Create your account and start
+              shopping your favourite products.
+            </p>
+
+
+            <div id="registerMessage"
+                 class="message">
+            </div>
+
+
+            <div class="input-group">
+
+              <label for="registerUsername">
+                Username
+              </label>
+
+              <input
+                type="text"
+                id="registerUsername"
+                placeholder="Choose a username"
+              />
+
+            </div>
+
+
+            <div class="input-group">
+
+              <label for="registerPassword">
+                Password
+              </label>
+
+              <input
+                type="password"
+                id="registerPassword"
+                placeholder="Minimum 6 characters"
+              />
+
+            </div>
+
+
+            <div class="input-group">
+
+              <label for="confirmPassword">
+                Confirm Password
+              </label>
+
+              <input
+                type="password"
+                id="confirmPassword"
+                placeholder="Confirm your password"
+              />
+
+            </div>
+
+
+            <button
+              class="btn"
+              onclick="registerUser()">
+
+              Create Account
+
+            </button>
+
+
+            <p class="switch-text">
+
+              Already have an account?
+
+              <a onclick="showLogin()">
+                Login here
+              </a>
+
+            </p>
+
+
+          </div>
+
+
+        </div>
+
+      </section>
+
+
+    </div>
+
+
+    <!-- DASHBOARD -->
+
+    <div id="dashboard"
+         class="dashboard">
+
+
+      <div class="dashboard-header">
+
+        <h2>
+          Dhariga Mart Dashboard
+        </h2>
+
+
+        <button
+          class="logout-btn"
+          onclick="logoutUser()">
+
+          Logout
+
+        </button>
+
+      </div>
+
+
+      <div class="dashboard-content">
+
+
+        <div class="welcome">
+
+          <h3 id="welcomeMessage">
+            Welcome!
+          </h3>
+
+          <p>
+            You are successfully logged in.
+            Explore dresses, shoes, bags, watches,
+            accessories and other shopping products.
+          </p>
+
+        </div>
+
+
+        <div class="stats">
+
+
+          <div class="stat">
+
+            <div class="stat-icon">
+              👤
+            </div>
+
+            <h4>
+              Profile
+            </h4>
+
+            <p>
+              Username:
+              <strong id="profileUsername"></strong>
+            </p>
+
+          </div>
+
+
+          <div class="stat">
+
+            <div class="stat-icon">
+              👗
+            </div>
+
+            <h4>
+              Fashion
+            </h4>
+
+            <p>
+              Explore dresses, shirts,
+              jeans and the latest fashion collections.
+            </p>
+
+          </div>
+
+
+          <div class="stat">
+
+            <div class="stat-icon">
+              👟
+            </div>
+
+            <h4>
+              Footwear
+            </h4>
+
+            <p>
+              Find stylish shoes, sandals,
+              sneakers and more.
+            </p>
+
+          </div>
+
+
+        </div>
+
+
+        <br>
+
+
+        <div class="stats">
+
+
+          <div class="stat">
+
+            <div class="stat-icon">
+              👜
+            </div>
+
+            <h4>
+              Bags
+            </h4>
+
+            <p>
+              Shop handbags, backpacks,
+              wallets and travel bags.
+            </p>
+
+          </div>
+
+
+          <div class="stat">
+
+            <div class="stat-icon">
+              ⌚
+            </div>
+
+            <h4>
+              Watches
+            </h4>
+
+            <p>
+              Discover stylish watches
+              for everyday use and special occasions.
+            </p>
+
+          </div>
+
+
+          <div class="stat">
+
+            <div class="stat-icon">
+              🛒
+            </div>
+
+            <h4>
+              Shopping
+            </h4>
+
+            <p>
+              Browse products, add items
+              to your cart and shop easily.
+            </p>
+
+          </div>
+
+
+        </div>
+
+      </div>
+
+    </div>
+
+
+  </div>
+
+
+  <script>
+
+
+    const STORAGE_KEY =
+      "dharigaMartUsers";
+
+
+    const SESSION_KEY =
+      "dharigaMartSession";
+
+
+    function getUsers(){
+
+      return JSON.parse(
+        localStorage.getItem(STORAGE_KEY)
+      ) || [];
+
+    }
+
+
+    function saveUsers(users){
+
+      localStorage.setItem(
+        STORAGE_KEY,
+        JSON.stringify(users)
+      );
+
+    }
+
+
+    function createSeedData(){
+
+      const users = getUsers();
+
+
+      if(!users.length){
+
+        saveUsers([
+
+          {
+            username:"admin",
+            password:"admin123"
+          }
+
+        ]);
+
+      }
+
+    }
+
+
+    function clearMessages(){
+
+      [
+        "loginMessage",
+        "registerMessage"
+      ].forEach(id => {
+
+        const el =
+          document.getElementById(id);
+
+        el.textContent = "";
+
+        el.className = "message";
+
+      });
+
+    }
+
+
+    function showMessage(
+      id,
+      message,
+      type
+    ){
+
+      const el =
+        document.getElementById(id);
+
+      el.textContent = message;
+
+      el.className =
+        `message ${type}`;
+
+    }
+
+
+    function showLogin(){
+
+      document.getElementById(
+        "loginForm"
+      ).style.display = "block";
+
+
+      document.getElementById(
+        "registerForm"
+      ).style.display = "none";
+
+
+      clearMessages();
+
+    }
+
+
+    function showRegister(){
+
+      document.getElementById(
+        "loginForm"
+      ).style.display = "none";
+
+
+      document.getElementById(
+        "registerForm"
+      ).style.display = "block";
+
+
+      clearMessages();
+
+    }
+
+
+    function registerUser(){
+
+      const username =
+        document.getElementById(
+          "registerUsername"
+        ).value.trim();
+
+
+      const password =
+        document.getElementById(
+          "registerPassword"
+        ).value;
+
+
+      const confirmPassword =
+        document.getElementById(
+          "confirmPassword"
+        ).value;
+
+
+      if(username.length < 3){
+
+        return showMessage(
+          "registerMessage",
+          "Username must contain at least 3 characters.",
+          "error"
+        );
+
+      }
+
+
+      if(password.length < 6){
+
+        return showMessage(
+          "registerMessage",
+          "Password must contain at least 6 characters.",
+          "error"
+        );
+
+      }
+
+
+      if(password !== confirmPassword){
+
+        return showMessage(
+          "registerMessage",
+          "Passwords do not match.",
+          "error"
+        );
+
+      }
+
+
+      const users =
+        getUsers();
+
+
+      const exists =
+        users.some(
+
+          user =>
+            user.username.toLowerCase()
+            === username.toLowerCase()
+
+        );
+
+
+      if(exists){
+
+        return showMessage(
+          "registerMessage",
+          "User already exists.",
+          "error"
+        );
+
+      }
+
+
+      users.push({
+
+        username:username,
+
+        password:password
+
+      });
+
+
+      saveUsers(users);
+
+
+      showMessage(
+        "registerMessage",
+        "Registration successful! Redirecting to login...",
+        "success"
+      );
+
+
+      document.getElementById(
+        "registerUsername"
+      ).value = "";
+
+
+      document.getElementById(
+        "registerPassword"
+      ).value = "";
+
+
+      document.getElementById(
+        "confirmPassword"
+      ).value = "";
+
+
+      setTimeout(
+        showLogin,
+        1500
+      );
+
+    }
+
+
+    function loginUser(){
+
+      const username =
+        document.getElementById(
+          "loginUsername"
+        ).value.trim();
+
+
+      const password =
+        document.getElementById(
+          "loginPassword"
+        ).value;
+
+
+      if(!username || !password){
+
+        return showMessage(
+          "loginMessage",
+          "Please enter username and password.",
+          "error"
+        );
+
+      }
+
+
+      const user =
+        getUsers().find(
+
+          u =>
+            u.username === username &&
+            u.password === password
+
+        );
+
+
+      if(!user){
+
+        return showMessage(
+          "loginMessage",
+          "Invalid username or password.",
+          "error"
+        );
+
+      }
+
+
+      sessionStorage.setItem(
+        SESSION_KEY,
+        username
+      );
+
+
+      showDashboard(username);
+
+    }
+
+
+    function showDashboard(username){
+
+      document.getElementById(
+        "authPage"
+      ).style.display = "none";
+
+
+      document.getElementById(
+        "dashboard"
+      ).style.display = "block";
+
+
+      document.getElementById(
+        "welcomeMessage"
+      ).textContent =
+        `Welcome back, ${username}!`;
+
+
+      document.getElementById(
+        "profileUsername"
+      ).textContent =
+        username;
+
+    }
+
+
+    function logoutUser(){
+
+      sessionStorage.removeItem(
+        SESSION_KEY
+      );
+
+
+      document.getElementById(
+        "dashboard"
+      ).style.display = "none";
+
+
+      document.getElementById(
+        "authPage"
+      ).style.display = "flex";
+
+
+      document.getElementById(
+        "loginUsername"
+      ).value = "";
+
+
+      document.getElementById(
+        "loginPassword"
+      ).value = "";
+
+
+      showLogin();
+
+
+      showMessage(
+        "loginMessage",
+        "Logged out successfully.",
+        "success"
+      );
+
+    }
+
+
+    function checkSession(){
+
+      const session =
+        sessionStorage.getItem(
+          SESSION_KEY
+        );
+
+
+      session
+        ? showDashboard(session)
+        : showLogin();
+
+    }
+
+
+    createSeedData();
+
+    checkSession();
+
+
+  </script>
+
+</body>
+</html>
